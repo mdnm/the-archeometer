@@ -4,9 +4,9 @@ An english translation of the book "L’Archéomètre, clef de toutes les religi
 
 Additional commentary on youtube here [https://www.youtube.com/@mat-moura](https://www.youtube.com/@mat-moura)
 
-You can find the original book under `/original-french` and the english translation under `/english-translation-draft`.
+You can find the original book under [`/original-french`](https://github.com/mdnm/the-archeometer/blob/main/original-french/L'Arch%C3%A9om%C3%A8tre%20-%20Clef%20de%20toutes%20les%20religions%20et%20de%20toutes%20--%20D'Alveydre%20Saint-Yves.pdf) and the english translation under [`/english-translation-draft`](https://github.com/mdnm/the-archeometer/tree/main/english-translation-draft).
 
-I'll keep updating the `/english-translation-draft` folder with the latest version used in the youtube videos. And when we have a final version, I'll move it to `/english-translation`.
+I'll keep updating the [`/english-translation-draft`](https://github.com/mdnm/the-archeometer/tree/main/english-translation-draft) folder with the latest version used in the youtube videos. And when we have a final version, I'll move it to [`/english-translation`](https://github.com/mdnm/the-archeometer/tree/main/english-translation).
 
 ## Support this
 
