@@ -1,14 +1,14 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 
-const markdownFiles = import.meta.glob('../content/english-translation-drafts/*.md', { eager: true });
-const files = Object.entries(markdownFiles)
-  .map(([path]) => ({
-    path,
-    title: path.split('/').pop()?.replace('.md', ''),
-    date: path.split('/').pop()?.split('-').slice(0, 3).join('-') // Extract date from filename
+const entries = await getCollection('english-translation-drafts');
+const files = entries
+  .map(entry => ({
+    id: entry.id,
+    date: entry.id.split('-').slice(0, 3).join('-')
   }))
-  .sort((a, b) => (b.date || '').localeCompare(a.date || '')); // Sort by date, newest first
+  .sort((a, b) => a.date.localeCompare(b.date));
 ---
 
 <Layout title="The Archeometer - English Translation">
@@ -16,15 +16,17 @@ const files = Object.entries(markdownFiles)
     <div class="px-4 py-5 sm:p-6">
       <h1 class="text-2xl font-bold text-gray-900 mb-6">English Translation Draft</h1>
       <div class="space-y-4">
-        {files.map(({ title }) => (
-          <div class="border-l-4 border-indigo-500 bg-indigo-50 p-4">
-            <a 
-              href={`/english-translation-drafts/${title}`}
+        {files.map(({ id }) => (
+          <a 
+						href={`/english-translation-drafts/${id}`}
+						class="flex border-l-4 border-indigo-500 bg-indigo-50 p-4"
+					>
+            <span
               class="text-lg font-medium text-indigo-700 hover:text-indigo-900"
             >
-              {title}
-            </a>
-          </div>
+              {id}
+            </span>
+          </a>
         ))}
       </div>
     </div>

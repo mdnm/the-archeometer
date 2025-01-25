@@ -1,48 +1,39 @@
 ---
 import type { GetStaticPaths } from 'astro';
-import type { ImportGlobFunction } from 'vite';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
-interface MarkdownModule {
-  Content: any;
-  [key: string]: any;
-}
+export const prerender = true;
 
 interface Props {
-  file: MarkdownModule;
-  title: string;
-  nextPage: { title: string } | null;
-  prevPage: { title: string } | null;
-}
-
-declare global {
-  interface ImportMeta {
-    glob: ImportGlobFunction;
-  }
+  entry: CollectionEntry<'english-translation-drafts'>;
+  nextPage: { slug: string; title: string } | null;
+  prevPage: { slug: string; title: string } | null;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const markdownFiles = import.meta.glob<MarkdownModule>('../../content/english-translation-drafts/*.md', { eager: true });
+  const entries = await getCollection('english-translation-drafts');
   
-  // Create sorted array of files
-  const sortedFiles = Object.entries(markdownFiles)
-    .map(([path, file]) => ({
-      path,
-      file,
-      title: path.split('/').pop()?.replace('.md', ''),
-      date: path.split('/').pop()?.split('-').slice(0, 3).join('-')
+  // Sort entries by date in filename
+  const sortedEntries = entries
+    .map(entry => ({
+      ...entry,
+      dateFromFilename: entry.id.split('-').slice(0, 3).join('-')
     }))
-    .sort((a, b) => (b.date || '').localeCompare(a.date || '')); // Sort by date, newest first
+    .sort((a, b) => b.dateFromFilename.localeCompare(a.dateFromFilename));
 
-  return sortedFiles.map((current, index) => {
-    const nextPage = index > 0 ? { title: sortedFiles[index - 1].title } : null;
-    const prevPage = index < sortedFiles.length - 1 ? { title: sortedFiles[index + 1].title } : null;
+  return sortedEntries.map((entry, index) => {
+    const nextPage = index > 0 
+      ? { slug: sortedEntries[index - 1].id, title: sortedEntries[index - 1].id }
+      : null;
+    const prevPage = index < sortedEntries.length - 1
+      ? { slug: sortedEntries[index + 1].id, title: sortedEntries[index + 1].id }
+      : null;
 
     return {
-      params: { slug: current.title },
+      params: { slug: entry.id },
       props: { 
-        file: current.file,
-        title: current.title,
+        entry,
         nextPage,
         prevPage
       },
@@ -50,36 +41,119 @@ export const getStaticPaths: GetStaticPaths = async () => {
   });
 };
 
-const { file, title, nextPage, prevPage } = Astro.props as Props;
+const { entry, nextPage, prevPage } = Astro.props;
+const { Content } = await entry.render();
 ---
 
-<Layout title={`${title} - The Archeometer`}>
-  <div class="bg-white shadow sm:rounded-lg">
-    <div class="px-4 py-5 sm:p-6">
-      <article class="prose lg:prose-xl max-w-none">
-        <file.Content />
-      </article>
-      
-      <div class="mt-8 flex justify-between border-t pt-4">
-        {prevPage && (
-          <a
-            href={`/english-translation-drafts/${prevPage.title}`}
-            class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
-          >
-            ← Previous: {prevPage.title}
-          </a>
-        )}
-        {!prevPage && <div />}
+<Layout title={`${entry.id} - The Archeometer`}>
+  <div class="relative">
+    {/* Fixed Navigation */}
+    <div class="fixed bottom-0 left-0 right-0 z-10 block navigation-buttons">
+      <div class="bg-white border-t shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+          {prevPage && (
+            <a
+              href={`/english-translation-drafts/${prevPage.slug}`}
+              class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+            >
+              ← Previous
+            </a>
+          )}
+          
+          <span class="text-sm text-gray-500 truncate max-w-[250px] md:max-w-full">
+            {entry.id}
+          </span>
+          
+          {nextPage && (
+            <a
+              href={`/english-translation-drafts/${nextPage.slug}`}
+              class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+            >
+              Next →
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+
+    {/* Main Content */}
+    <div class="bg-white shadow sm:rounded-lg mb-24">
+      <div class="px-4 py-5 sm:p-6">
+        <article class="prose lg:prose-xl max-w-none">
+          <Content />
+        </article>
         
-        {nextPage && (
-          <a
-            href={`/english-translation-drafts/${nextPage.title}`}
-            class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
-          >
-            Next: {nextPage.title} →
-          </a>
-        )}
+        {/* Bottom Navigation (visible at the end and on mobile) */}
+        <div class="mt-8 flex items-center justify-between border-t pt-4 navigation-end">
+          {prevPage && (
+            <a
+              href={`/english-translation-drafts/${prevPage.slug}`}
+              class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+            >
+              ← Previous
+            </a>
+          )}
+          
+          <span class="text-sm text-gray-500 truncate max-w-[250px] md:max-w-full">
+            {entry.id}
+          </span>
+          
+          {nextPage && (
+            <a
+              href={`/english-translation-drafts/${nextPage.slug}`}
+              class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+            >
+              Next →
+            </a>
+          )}
+        </div>
       </div>
     </div>
   </div>
+
+  <style>
+    .navigation-buttons {
+      opacity: 1;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .navigation-buttons.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .navigation-end {
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .navigation-end.show {
+      opacity: 1;
+    }
+  </style>
+
+  <script>
+    // Handle scroll behavior for navigation buttons
+    const nav = document.querySelector('.navigation-buttons');
+    const endNav = document.querySelector('.navigation-end');
+    
+    if (nav && endNav) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            nav.classList.add('hide');
+            endNav.classList.add('show');
+          } else {
+            nav.classList.remove('hide');
+            endNav.classList.remove('show');
+          }
+        },
+        {
+          rootMargin: '100px',
+        }
+      );
+
+      observer.observe(endNav);
+    }
+  </script>
 </Layout> 
