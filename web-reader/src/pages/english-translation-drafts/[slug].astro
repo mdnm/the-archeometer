@@ -1,0 +1,85 @@
+---
+import type { GetStaticPaths } from 'astro';
+import type { ImportGlobFunction } from 'vite';
+import Layout from '../../layouts/Layout.astro';
+
+interface MarkdownModule {
+  Content: any;
+  [key: string]: any;
+}
+
+interface Props {
+  file: MarkdownModule;
+  title: string;
+  nextPage: { title: string } | null;
+  prevPage: { title: string } | null;
+}
+
+declare global {
+  interface ImportMeta {
+    glob: ImportGlobFunction;
+  }
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const markdownFiles = import.meta.glob<MarkdownModule>('../../content/english-translation-drafts/*.md', { eager: true });
+  
+  // Create sorted array of files
+  const sortedFiles = Object.entries(markdownFiles)
+    .map(([path, file]) => ({
+      path,
+      file,
+      title: path.split('/').pop()?.replace('.md', ''),
+      date: path.split('/').pop()?.split('-').slice(0, 3).join('-')
+    }))
+    .sort((a, b) => (b.date || '').localeCompare(a.date || '')); // Sort by date, newest first
+
+  return sortedFiles.map((current, index) => {
+    const nextPage = index > 0 ? { title: sortedFiles[index - 1].title } : null;
+    const prevPage = index < sortedFiles.length - 1 ? { title: sortedFiles[index + 1].title } : null;
+
+    return {
+      params: { slug: current.title },
+      props: { 
+        file: current.file,
+        title: current.title,
+        nextPage,
+        prevPage
+      },
+    };
+  });
+};
+
+const { file, title, nextPage, prevPage } = Astro.props as Props;
+---
+
+<Layout title={`${title} - The Archeometer`}>
+  <div class="bg-white shadow sm:rounded-lg">
+    <div class="px-4 py-5 sm:p-6">
+      <article class="prose lg:prose-xl max-w-none">
+        <file.Content />
+      </article>
+      
+      <div class="mt-8 flex justify-between border-t pt-4">
+        {prevPage && (
+          <a
+            href={`/english-translation-drafts/${prevPage.title}`}
+            class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+          >
+            ← Previous: {prevPage.title}
+          </a>
+        )}
+        {!prevPage && <div />}
+        
+        {nextPage && (
+          <a
+            href={`/english-translation-drafts/${nextPage.title}`}
+            class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+          >
+            Next: {nextPage.title} →
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+</Layout> 

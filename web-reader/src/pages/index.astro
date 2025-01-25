@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const markdownFiles = import.meta.glob('../content/english-translation-drafts/*.md', { eager: true });
+const files = Object.entries(markdownFiles)
+  .map(([path]) => ({
+    path,
+    title: path.split('/').pop()?.replace('.md', ''),
+    date: path.split('/').pop()?.split('-').slice(0, 3).join('-') // Extract date from filename
+  }))
+  .sort((a, b) => (b.date || '').localeCompare(a.date || '')); // Sort by date, newest first
+---
+
+<Layout title="The Archeometer - English Translation">
+  <div class="bg-white shadow sm:rounded-lg">
+    <div class="px-4 py-5 sm:p-6">
+      <h1 class="text-2xl font-bold text-gray-900 mb-6">English Translation Draft</h1>
+      <div class="space-y-4">
+        {files.map(({ title }) => (
+          <div class="border-l-4 border-indigo-500 bg-indigo-50 p-4">
+            <a 
+              href={`/english-translation-drafts/${title}`}
+              class="text-lg font-medium text-indigo-700 hover:text-indigo-900"
+            >
+              {title}
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</Layout>
