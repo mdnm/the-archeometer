@@ -73,7 +73,7 @@ const { Content } = await render(entry);
     {/* Fixed Navigation */}
     <div class="fixed bottom-0 left-0 right-0 z-10 block navigation-buttons">
       <div class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center gap-2">
           {prevPage && (
             <a
               href={`/english-translation-drafts/${prevPage.slug}`}
@@ -107,7 +107,7 @@ const { Content } = await render(entry);
         </article>
         
         {/* Bottom Navigation (visible at the end and on mobile) */}
-        <div class="mt-8 flex items-center justify-between border-t border-gray-200 dark:border-gray-700 pt-4 navigation-end">
+        <div class="mt-8 flex items-center justify-between border-t border-gray-200 dark:border-gray-700 pt-4 navigation-end gap-2">
           {prevPage && (
             <a
               href={`/english-translation-drafts/${prevPage.slug}`}
