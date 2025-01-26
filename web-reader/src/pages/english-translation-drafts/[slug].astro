@@ -47,6 +47,34 @@ const { Content } = await entry.render();
 
 <Layout title={`${entry.id} - The Archeometer`}>
   <div class="relative">
+    {/* YouTube Section */}
+    <div class="bg-white shadow sm:rounded-lg mb-6">
+      <div class="px-4 py-5 sm:p-6">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Video Commentary</h2>
+        <div class="aspect-video w-full">
+          <iframe
+            class="w-full h-full rounded-lg"
+            src="https://www.youtube.com/embed/videoseries?list=PLBqcbZfBWZxLGGxRYfYEZQDPwGJpDPXS4"
+            title="The Archeometer Video Commentary"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <p class="mt-4 text-gray-600">
+          Watch the video commentary series where we explore and discuss the contents of The Archeometer in detail.
+          <a 
+            href="https://www.youtube.com/playlist?list=PLBqcbZfBWZxLGGxRYfYEZQDPwGJpDPXS4" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="text-indigo-600 hover:text-indigo-800"
+          >
+            View on YouTube →
+          </a>
+        </p>
+      </div>
+    </div>
+
     {/* Fixed Navigation */}
     <div class="fixed bottom-0 left-0 right-0 z-10 block navigation-buttons">
       <div class="bg-white border-t shadow-lg">

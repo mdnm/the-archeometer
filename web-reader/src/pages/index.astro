@@ -8,25 +8,52 @@ const files = entries
     id: entry.id,
     date: entry.id.split('-').slice(0, 3).join('-')
   }))
-  .sort((a, b) => a.date.localeCompare(b.date));
+  .sort((a, b) => b.date.localeCompare(a.date));
 ---
 
 <Layout title="The Archeometer - English Translation">
+  {/* YouTube Section */}
+  <div class="bg-white shadow sm:rounded-lg mb-6">
+    <div class="px-4 py-5 sm:p-6">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">READING AND COMMENTING - The Archeometer</h2>
+      <div class="aspect-video w-full">
+        <iframe
+          class="w-full h-full rounded-lg"
+          src="https://www.youtube.com/embed/videoseries?si=7v78O6PhaurANb0F&amp;list=PLf6K24k21wdptRjSOw-VBexoI_SOTNkao"
+          title="READING AND COMMENTING - The Archeometer"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <p class="mt-4 text-gray-600">
+        Join me on this series where we read along and I comment on books. The book we're reading now is "The Archeometer - KEY TO ALL RELIGIONS AND ALL SCIENCES OF ANTIQUITY", an english translation of L'Archéomètre - Clef de toutes les religions et de toutes by Saint-Yves D'Alveydre.
+      </p>
+			<a 
+				href="https://www.youtube.com/playlist?list=PLBqcbZfBWZxLGGxRYfYEZQDPwGJpDPXS4" 
+				target="_blank" 
+				rel="noopener noreferrer"
+				class="flex mt-4 bg-indigo-600 hover:bg-indigo-800 w-full text-white font-bold py-2 px-4 rounded"
+			>
+				View on YouTube
+			</a>
+    </div>
+  </div>
+
+  {/* Content List */}
   <div class="bg-white shadow sm:rounded-lg">
     <div class="px-4 py-5 sm:p-6">
       <h1 class="text-2xl font-bold text-gray-900 mb-6">English Translation Draft</h1>
       <div class="space-y-4">
         {files.map(({ id }) => (
-          <a 
-						href={`/english-translation-drafts/${id}`}
-						class="flex border-l-4 border-indigo-500 bg-indigo-50 p-4"
-					>
-            <span
+          <div class="border-l-4 border-indigo-500 bg-indigo-50 p-4">
+            <a 
+              href={`/english-translation-drafts/${id}`}
               class="text-lg font-medium text-indigo-700 hover:text-indigo-900"
             >
               {id}
-            </span>
-          </a>
+            </a>
+          </div>
         ))}
       </div>
     </div>
