@@ -1,54 +1,30 @@
 ---
 import type { GetStaticPaths } from 'astro';
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { getCollection, type CollectionEntry, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
 export const prerender = true;
 
 interface Props {
-  entry: CollectionEntry<'english-translation-drafts'> & {
-    youtubeEmbedLink?: string;
-    youtubeEmbedTitle?: string;
-    dateFromFilename: string;
-  };
-  nextPage: { slug: string; title: string } | null;
+  entry: CollectionEntry<'english-translation-drafts'>;  nextPage: { slug: string; title: string } | null;
   prevPage: { slug: string; title: string } | null;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const entryToYoutubeDataMap = {
-    '16-01-25-notes from brazilian version.md': {
-      youtubeEmbedLink: 'https://www.youtube.com/embed/moR0kP5ks5Q?si=YmPXtWb03BWau656',
-      youtubeEmbedTitle: 'Reading and Explaining The Archeometer - EP 0'
-    },
-    '23-01-25-brazilian version intro + preface.md': {
-      youtubeEmbedLink: 'https://www.youtube.com/embed/b1u8ghB8MQs?si=GURK-dMz4jUknLMQ',
-      youtubeEmbedTitle: 'Reading and Explaining The Archeometer - EP 1'
-    }
-  }
-
   const entries = await getCollection('english-translation-drafts');
-  
-  // Sort entries by date in filename
   const sortedEntries = entries
-    .map(entry => ({
-      ...entry,
-      dateFromFilename: entry.id.split('-').slice(0, 3).join('-'),
-      youtubeEmbedLink: entryToYoutubeDataMap[entry.id as keyof typeof entryToYoutubeDataMap]?.youtubeEmbedLink,
-      youtubeEmbedTitle: entryToYoutubeDataMap[entry.id as keyof typeof entryToYoutubeDataMap]?.youtubeEmbedTitle,
-    }))
-    .sort((a, b) => b.dateFromFilename.localeCompare(a.dateFromFilename));
+    .sort((a, b) => a.data.date.localeCompare(b.data.date));
 
   return sortedEntries.map((entry, index) => {
-    const nextPage = index > 0 
-      ? { slug: sortedEntries[index - 1].id, title: sortedEntries[index - 1].id }
-      : null;
-    const prevPage = index < sortedEntries.length - 1
+    const nextPage = index < sortedEntries.length - 1
       ? { slug: sortedEntries[index + 1].id, title: sortedEntries[index + 1].id }
+      : null;
+    const prevPage = index > 0
+      ? { slug: sortedEntries[index - 1].id, title: sortedEntries[index - 1].id }
       : null;
 
     return {
-      params: { slug: entry.id },
+      params: { slug: entry.id, id: entry.id },
       props: { 
         entry,
         nextPage,
@@ -59,21 +35,21 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 const { entry, nextPage, prevPage } = Astro.props;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 ---
 
-<Layout title={`${entry.id} - The Archeometer`}>
+<Layout title={`${entry.data.title} - The Archeometer`}>
   <div class="relative">
     {/* YouTube Section */}
-    {entry.youtubeEmbedLink && (
+    {entry.data.youtubeEmbedLink && (
       <div class="bg-white dark:bg-gray-800 shadow sm:rounded-lg mb-6">
         <div class="px-4 py-5 sm:p-6">
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">{entry.youtubeEmbedTitle}</h2>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">{entry.data.youtubeEmbedTitle}</h2>
           <div class="aspect-video w-full">
             <iframe
             class="w-full h-full rounded-lg"
-            src={entry.youtubeEmbedLink}
-            title={entry.youtubeEmbedTitle}
+            src={entry.data.youtubeEmbedLink}
+            title={entry.data.youtubeEmbedTitle}
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen
@@ -108,7 +84,7 @@ const { Content } = await entry.render();
           )}
           
           <span class="text-sm text-gray-500 dark:text-gray-400 truncate max-w-[250px] md:max-w-full">
-            {entry.id}
+            {entry.data.title}
           </span>
           
           {nextPage && (
@@ -142,7 +118,7 @@ const { Content } = await entry.render();
           )}
           
           <span class="text-sm text-gray-500 dark:text-gray-400 truncate max-w-[250px] md:max-w-full">
-            {entry.id}
+            {entry.data.title}
           </span>
           
           {nextPage && (

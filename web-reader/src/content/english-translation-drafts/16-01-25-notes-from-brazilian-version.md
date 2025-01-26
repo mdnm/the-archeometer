@@ -1,3 +1,10 @@
+---
+title: Notes from Brazilian Version
+date: '2025-01-16'
+youtubeEmbedLink: https://www.youtube.com/embed/moR0kP5ks5Q?si=YmPXtWb03BWau656
+youtubeEmbedTitle: Reading and Explaining The Archeometer - EP 0
+---
+
 ### Saint-Yves d’Alveydre, the Man and the Mission
 In consulting Brazilian and French dictionaries and encyclopedias, extremely rare and sparing references are found for the term *“sinarchy.”*  
 France’s most famous encyclopedia, *Larousse du XXe Siècle* (1920 edition), defines it as follows: *Simultaneous government of various princes who rule different parts of a state.*  

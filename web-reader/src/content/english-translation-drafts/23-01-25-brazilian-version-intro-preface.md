@@ -1,3 +1,10 @@
+---
+title: Brazilian Version Intro and Preface
+date: '2025-01-23'
+youtubeEmbedLink: https://www.youtube.com/embed/b1u8ghB8MQs?si=GURK-dMz4jUknLMQ
+youtubeEmbedTitle: Reading and Explaining The Archeometer - EP 1
+---
+
 # Saint-Yves d'Alveydre, the Missions Revealer
 
 Joseph-Alexandre Saint-Yves was born on March 26, 1842, in Paris, the son of Guillaume-Alexandre, a 36-year-old physician, and Marie-Josephine Amouroux, slightly over 18 years old, at one o’clock in the morning at the family residence located at number 23 on Rue L’Echiquier, a few meters from the Church of Saint-Denis.

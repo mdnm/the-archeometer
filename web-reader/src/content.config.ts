@@ -1,11 +1,14 @@
 import { defineCollection, z } from 'astro:content';
 
+import { glob } from 'astro/loaders';
+
 const englishTranslationDrafts = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/english-translation-drafts" }),
   schema: z.object({
-    title: z.string().optional(),
-    date: z.string().optional(),
-    youtubeEmbedLink: z.string().optional(),
-    youtubeEmbedTitle: z.string().optional(),
+    title: z.string(),
+    date: z.string(),
+    youtubeEmbedLink: z.string(),
+    youtubeEmbedTitle: z.string(),
   }),
 });
 
