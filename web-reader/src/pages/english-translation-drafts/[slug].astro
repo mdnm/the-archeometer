@@ -6,19 +6,36 @@ import Layout from '../../layouts/Layout.astro';
 export const prerender = true;
 
 interface Props {
-  entry: CollectionEntry<'english-translation-drafts'>;
+  entry: CollectionEntry<'english-translation-drafts'> & {
+    youtubeEmbedLink?: string;
+    youtubeEmbedTitle?: string;
+    dateFromFilename: string;
+  };
   nextPage: { slug: string; title: string } | null;
   prevPage: { slug: string; title: string } | null;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const entryToYoutubeDataMap = {
+    '16-01-25-notes from brazilian version.md': {
+      youtubeEmbedLink: 'https://www.youtube.com/embed/moR0kP5ks5Q?si=YmPXtWb03BWau656',
+      youtubeEmbedTitle: 'Reading and Explaining The Archeometer - EP 0'
+    },
+    '23-01-25-brazilian version intro + preface.md': {
+      youtubeEmbedLink: 'https://www.youtube.com/embed/b1u8ghB8MQs?si=GURK-dMz4jUknLMQ',
+      youtubeEmbedTitle: 'Reading and Explaining The Archeometer - EP 1'
+    }
+  }
+
   const entries = await getCollection('english-translation-drafts');
   
   // Sort entries by date in filename
   const sortedEntries = entries
     .map(entry => ({
       ...entry,
-      dateFromFilename: entry.id.split('-').slice(0, 3).join('-')
+      dateFromFilename: entry.id.split('-').slice(0, 3).join('-'),
+      youtubeEmbedLink: entryToYoutubeDataMap[entry.id as keyof typeof entryToYoutubeDataMap]?.youtubeEmbedLink,
+      youtubeEmbedTitle: entryToYoutubeDataMap[entry.id as keyof typeof entryToYoutubeDataMap]?.youtubeEmbedTitle,
     }))
     .sort((a, b) => b.dateFromFilename.localeCompare(a.dateFromFilename));
 
@@ -48,54 +65,56 @@ const { Content } = await entry.render();
 <Layout title={`${entry.id} - The Archeometer`}>
   <div class="relative">
     {/* YouTube Section */}
-    <div class="bg-white shadow sm:rounded-lg mb-6">
-      <div class="px-4 py-5 sm:p-6">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">Video Commentary</h2>
-        <div class="aspect-video w-full">
-          <iframe
+    {entry.youtubeEmbedLink && (
+      <div class="bg-white dark:bg-gray-800 shadow sm:rounded-lg mb-6">
+        <div class="px-4 py-5 sm:p-6">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">{entry.youtubeEmbedTitle}</h2>
+          <div class="aspect-video w-full">
+            <iframe
             class="w-full h-full rounded-lg"
-            src="https://www.youtube.com/embed/videoseries?list=PLBqcbZfBWZxLGGxRYfYEZQDPwGJpDPXS4"
-            title="The Archeometer Video Commentary"
+            src={entry.youtubeEmbedLink}
+            title={entry.youtubeEmbedTitle}
             frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen
-          ></iframe>
-        </div>
-        <p class="mt-4 text-gray-600">
-          Watch the video commentary series where we explore and discuss the contents of The Archeometer in detail.
+            ></iframe>
+          </div>
+          <p class="mt-4 text-gray-600 dark:text-gray-300">
+            Join me on this series where we read along and I comment on books. The book we're reading now is "The Archeometer - KEY TO ALL RELIGIONS AND ALL SCIENCES OF ANTIQUITY", an english translation of L'Archéomètre - Clef de toutes les religions et de toutes by Saint-Yves D'Alveydre.
+          </p>
           <a 
             href="https://www.youtube.com/playlist?list=PLBqcbZfBWZxLGGxRYfYEZQDPwGJpDPXS4" 
             target="_blank" 
             rel="noopener noreferrer"
-            class="text-indigo-600 hover:text-indigo-800"
+            class="flex mt-4 bg-indigo-600 hover:bg-indigo-800 w-full text-white font-bold py-2 px-4 rounded"
           >
-            View on YouTube →
+            View on YouTube
           </a>
-        </p>
+        </div>
       </div>
-    </div>
+    )}
 
     {/* Fixed Navigation */}
     <div class="fixed bottom-0 left-0 right-0 z-10 block navigation-buttons">
-      <div class="bg-white border-t shadow-lg">
+      <div class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           {prevPage && (
             <a
               href={`/english-translation-drafts/${prevPage.slug}`}
-              class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+              class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
             >
               ← Previous
             </a>
           )}
           
-          <span class="text-sm text-gray-500 truncate max-w-[250px] md:max-w-full">
+          <span class="text-sm text-gray-500 dark:text-gray-400 truncate max-w-[250px] md:max-w-full">
             {entry.id}
           </span>
           
           {nextPage && (
             <a
               href={`/english-translation-drafts/${nextPage.slug}`}
-              class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+              class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
             >
               Next →
             </a>
@@ -105,31 +124,31 @@ const { Content } = await entry.render();
     </div>
 
     {/* Main Content */}
-    <div class="bg-white shadow sm:rounded-lg mb-24">
+    <div class="bg-white dark:bg-gray-800 shadow sm:rounded-lg mb-24">
       <div class="px-4 py-5 sm:p-6">
-        <article class="prose lg:prose-xl max-w-none">
+        <article class="prose lg:prose-xl dark:prose-invert max-w-none">
           <Content />
         </article>
         
         {/* Bottom Navigation (visible at the end and on mobile) */}
-        <div class="mt-8 flex items-center justify-between border-t pt-4 navigation-end">
+        <div class="mt-8 flex items-center justify-between border-t border-gray-200 dark:border-gray-700 pt-4 navigation-end">
           {prevPage && (
             <a
               href={`/english-translation-drafts/${prevPage.slug}`}
-              class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+              class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
             >
               ← Previous
             </a>
           )}
           
-          <span class="text-sm text-gray-500 truncate max-w-[250px] md:max-w-full">
+          <span class="text-sm text-gray-500 dark:text-gray-400 truncate max-w-[250px] md:max-w-full">
             {entry.id}
           </span>
           
           {nextPage && (
             <a
               href={`/english-translation-drafts/${nextPage.slug}`}
-              class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+              class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
             >
               Next →
             </a>
