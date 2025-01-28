@@ -2,6 +2,8 @@
 
 An english translation of the book "L’Archéomètre, clef de toutes les religions & de toutes les sciences de l’Antiquité" with special commentary. 
 
+Read it online on [https://thearcheometer.com](https://thearcheometer.com).
+
 Additional commentary on youtube here [https://www.youtube.com/playlist?list=PLf6K24k21wdptRjSOw-VBexoI_SOTNkao](https://www.youtube.com/playlist?list=PLf6K24k21wdptRjSOw-VBexoI_SOTNkao)
 
 You can find the original book under [`/original-french`](https://github.com/mdnm/the-archeometer/blob/main/original-french/L'Arch%C3%A9om%C3%A8tre%20-%20Clef%20de%20toutes%20les%20religions%20et%20de%20toutes%20--%20D'Alveydre%20Saint-Yves.pdf) and the english translation under [`/english-translation-draft`](https://github.com/mdnm/the-archeometer/tree/main/english-translation-draft).
