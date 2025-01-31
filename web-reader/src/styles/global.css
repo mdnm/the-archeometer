@@ -1,3 +1,60 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities; 
+@tailwind utilities;
+
+/* Footnote Reference Styles */
+.prose sup a {
+  @apply no-underline bg-indigo-100/50 text-indigo-600 px-1.5 py-0.5 mx-0.5 rounded text-xs font-semibold transition-all duration-200;
+}
+
+.prose sup a:hover {
+  @apply bg-indigo-100;
+}
+
+.dark .prose sup a {
+  @apply bg-indigo-500/20 text-indigo-300;
+}
+
+.dark .prose sup a:hover {
+  @apply bg-indigo-500/30;
+}
+
+/* Footnote Definition Styles */
+.prose .footnotes p {
+  @apply text-sm leading-relaxed my-2;
+}
+
+.prose .footnotes ol {
+  @apply list-none pl-0;
+  counter-reset: footnote;
+}
+
+.prose .footnotes ol li {
+  @apply relative pl-10 mb-4;
+  counter-increment: footnote;
+}
+
+.prose .footnotes ol li::before {
+  @apply absolute left-0 top-0 h-6 w-6 bg-indigo-100/50 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold;
+  content: counter(footnote);
+}
+
+.dark .prose .footnotes ol li::before {
+  @apply bg-indigo-500/20 text-indigo-300;
+}
+
+.prose .footnotes a[data-footnote-backref] {
+  @apply no-underline ml-0.5 text-indigo-600;
+}
+
+.dark .prose .footnotes a[data-footnote-backref] {
+  @apply text-indigo-300;
+}
+
+.prose .footnotes em {
+  @apply text-gray-600;
+}
+
+.dark .prose .footnotes em {
+  @apply text-gray-400;
+} 

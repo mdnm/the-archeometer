@@ -1,5 +1,5 @@
 ---
-title: Brazilian Version Intro and Preface
+title: Brazilian Version Intro and Foreword
 date: '2025-01-23'
 youtubeEmbedLink: https://www.youtube.com/embed/b1u8ghB8MQs?si=GURK-dMz4jUknLMQ
 youtubeEmbedTitle: Reading and Explaining The Archeometer - EP 1
