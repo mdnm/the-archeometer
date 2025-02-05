@@ -6,7 +6,7 @@ date: '2025-02-06'
 # FIRST PART
 
 ## The Wisdom of Man and Paganism  
-**Omnis homo mendax - Saímos CXVI, II.** - **All men are liars - Psalm 116:11**
+**Omnis homo mendax - Psalm CXVI, II.** - **All men are liars - Psalm 116:11**
 
 ---
 
