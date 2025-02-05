@@ -1,6 +1,8 @@
 ---
 title: Preface
 date: '2025-01-31'
+youtubeEmbedLink: https://www.youtube.com/embed/H8qZi958Om8
+youtubeEmbedTitle: Reading and Explaining The Archeometer - EP 2
 ---
 
 # Preface
@@ -87,7 +89,7 @@ The glory for this belongs solely to Jesus Christ and, through Him, to His Angel
 
 ---
 
-[^2]: *Proto-síntese*: The first synthesis undertaken on Earth.  
+[^2]: *Proto-synthesis*: The first synthesis undertaken on Earth.  
 [^3]: See note by the Friends of Saint-Yves in *Mission des Juifs* (*The Mission of the Jews*).  
 [^4]: Note by the Friends of Saint-Yves d’Alveydre, *loc. cit.*  
 [^*]: Translator’s Note: “Stop, traveler, you tread upon a hero’s dust!” Epitaph inscribed by the Count d’Enghien on the tomb of his great opponent, General Mercy, killed in 1645 in the Thirty Years’ War.  

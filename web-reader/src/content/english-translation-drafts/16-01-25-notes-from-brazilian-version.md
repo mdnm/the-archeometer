@@ -1,7 +1,7 @@
 ---
 title: Notes from Brazilian Version
 date: '2025-01-16'
-youtubeEmbedLink: https://www.youtube.com/embed/moR0kP5ks5Q?si=YmPXtWb03BWau656
+youtubeEmbedLink: https://www.youtube.com/embed/moR0kP5ks5Q
 youtubeEmbedTitle: Reading and Explaining The Archeometer - EP 0
 ---
 
