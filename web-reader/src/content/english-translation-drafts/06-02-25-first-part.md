@@ -102,7 +102,7 @@ Right after First Communion, when the child leaves through the Church’s golden
 
 The graft wilts again; the wild sapling recovers its rights; the sap of the senses usurps that of the heart, and, being no longer exorcised, the young spirit rebels or weakens under compulsion.
 
-But here appears the magic lantern of Paganism, which begins its projections, its evocations, and, oh, its funereal reincarnations, over a rapt group of young mediums, living souls: Homer, Horace, Virgil, Demosthenes, Cicero, and then all the Saturnalia of philosophical individualism and the politicians, the sophists, and the rhetoricians—every bourgeois Lycanthropy[^23] of the Roman she-wolf, every mediocre Aigotropy[^24] of the Greek he-goat.
+But here appears the magic lantern of Paganism, which begins its projections, its evocations, and, oh, its funereal reincarnations, over a rapt group of young mediums, living souls: Homer, Horace, Virgil, Demosthenes, Cicero, and then all the Saturnalia of philosophical individualism and the politicians, the sophists, and the rhetoricians—every bourgeois Lycanthropy[^23] of the Roman she-wolf, every mediocre Aigothropy[^24] of the Greek he-goat.
 
 What infernal possession afflicts the children! And how can they resist it, now that they have adult reason yet lack a complete education, lacking a holistic teaching that checks every doctrine to verify its errors or truths in light of the objective criteria, about which we shall speak in the second part of this book.
 
@@ -117,4 +117,4 @@ What infernal possession afflicts the children! And how can they resist it, now 
 [^21]: *Eden (Heb.)*: The earthly Paradise according to the Bible. A place of delights, a pleasant site.  
 [^22]: *Coryphaeus*: A chief or leader of a class, party, or profession; a chorus director in ancient tragedies.  
 [^23]: *Lycanthropy (lycomania)*: A mental alienation in which the patient believes he is turning into a wolf; the alleged metamorphosis into a werewolf.
-[^24]: *Aigotropy*: Aigo (goat). It's a wordplay with Lycanthropy, alluding to someone embodying the characteristics of a goat.
+[^24]: *Aigothropy*: Aigo (goat). It's a wordplay with Lycanthropy, alluding to someone embodying the characteristics of a goat.
