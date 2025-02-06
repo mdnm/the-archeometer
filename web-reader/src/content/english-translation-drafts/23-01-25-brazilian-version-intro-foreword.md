@@ -3,6 +3,9 @@ title: Brazilian Version Intro and Foreword
 date: '2025-01-23'
 youtubeEmbedLink: https://www.youtube.com/embed/b1u8ghB8MQs
 youtubeEmbedTitle: Reading and Explaining The Archeometer - EP 1
+description: Brazilian Version Intro and Foreword
+image: /og-image.png
+keywords: The Archeometer, Saint-Yves d'Alveydre
 ---
 
 # Saint-Yves d'Alveydre, the Missions Revealer

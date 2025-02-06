@@ -3,6 +3,9 @@ title: Notes from Brazilian Version
 date: '2025-01-16'
 youtubeEmbedLink: https://www.youtube.com/embed/moR0kP5ks5Q
 youtubeEmbedTitle: Reading and Explaining The Archeometer - EP 0
+description: Notes from the Brazilian version of The Archeometer
+image: /og-image.png
+keywords: The Archeometer, Saint-Yves d'Alveydre, sinarchy
 ---
 
 ### Saint-Yves d’Alveydre, the Man and the Mission

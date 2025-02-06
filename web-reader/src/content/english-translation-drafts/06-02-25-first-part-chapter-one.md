@@ -1,6 +1,9 @@
 ---
-title: First Part - The Wisdom of Man and Paganism
+title: First Part - First Chapter - The Wisdom of Man and Paganism
 date: '2025-02-06'
+description: First Part - First Chapter - The Wisdom of Man and Paganism
+image: /og-image.png
+keywords: The Archeometer, Saint-Yves d'Alveydre, Paganism
 ---
 
 # FIRST PART

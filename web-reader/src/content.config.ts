@@ -7,8 +7,11 @@ const englishTranslationDrafts = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.string(),
-    youtubeEmbedLink: z.string(),
-    youtubeEmbedTitle: z.string(),
+    youtubeEmbedLink: z.string().optional(),
+    youtubeEmbedTitle: z.string().optional(),
+    description: z.string().optional(),
+    image: z.string().optional(),
+    keywords: z.array(z.string()).optional(),
   }),
 });
 

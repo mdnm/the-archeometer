@@ -3,6 +3,9 @@ title: Preface
 date: '2025-01-31'
 youtubeEmbedLink: https://www.youtube.com/embed/H8qZi958Om8
 youtubeEmbedTitle: Reading and Explaining The Archeometer - EP 2
+description: Preface
+image: /og-image.png
+keywords: The Archeometer, Saint-Yves d'Alveydre, Ancient Civilizations
 ---
 
 # Preface
