@@ -4,6 +4,8 @@ date: '2025-02-06'
 description: First Part - First Chapter - The Wisdom of Man and Paganism
 image: /og-image.png
 keywords: The Archeometer, Saint-Yves d'Alveydre, Paganism
+youtubeEmbedLink: https://www.youtube.com/embed/T6GQTDeYN2o
+youtubeEmbedTitle: Reading and Explaining The Archeometer - EP 3
 ---
 
 # FIRST PART
@@ -19,7 +21,7 @@ keywords: The Archeometer, Saint-Yves d'Alveydre, Paganism
 
 **FROM THE UNIVERSAL VERBAL SYNTHESIS TO INDIVIDUAL PHILOSOPHY — PAGAN INSTRUCTION AND CHRISTIAN EDUCATION**  
 
-**Definition of Paganism. — Its Character. — Its Essence is Anarchy. — Human Will Elevated to a Principle. — Krishna’s Trimurti. — The Sudras. — The Mentality of the Third Caste. — Its Rejection by Religious Bodies. — The Millennial Paganism of the Mediterranean. — Paganism Has Dominated the Clergy and Instruction for Over Four Centuries. — Exclusively Pagan Instruction. — Religious Education Reduced to Catechesis. — Imbalance in Favor of Paganism. — Being and Possessing. — Phryne and the Areópago. — Experimental Paganism in the Child. — The Father and the Mother; Their Role. — The School of Life. — Where to Find the Spirit of Life? — Wealth. — The Pagan Evolution of the Child. — The Priest; His Role. — The Catechism. — The University. — Pagan Possession.**
+**Definition of Paganism. — Its Character. — Its Essence is Anarchy. — Human Will Elevated to a Principle. — Krishna’s Trimurti. — The Sudras. — The Mentality of the Third Caste. — Its Rejection by Religious Bodies. — The Millennial Paganism of the Mediterranean. — Paganism Has Dominated the Clergy and Instruction for Over Four Centuries. — Exclusively Pagan Instruction. — Religious Education Reduced to Catechesis. — Imbalance in Favor of Paganism. — Being and Possessing. — Phryne and the Areopagus. — Experimental Paganism in the Child. — The Father and the Mother; Their Role. — The School of Life. — Where to Find the Spirit of Life? — Wealth. — The Pagan Evolution of the Child. — The Priest; His Role. — The Catechism. — The University. — Pagan Possession.**
 
 Paganism is a mental and governmental state that goes from the bud to the wild tree.
 
@@ -61,7 +63,7 @@ The method of the Word is always that which formulates everything in life, and h
 
 A person might possess billions and be nothing. Someone might have nothing and yet be of immeasurable worth. Thus, the value of instruction depends on the error one makes of it, just like fortune, talent, and beauty.
 
-When the Hellenists of the Areópago acquit Phryne of all her crimes because she drops her garments to her feet, Themis[^20] brands those boars of earthly Venus on the back, for the triumphal chariot of the Roman butcher. The penitentiary system takes the place of education’s absence. Such is the Mystery: social life must devour death or all causes of collective mortality. Thus, a thousand years after Zoroaster, Moses repeats: “Our God is a consuming fire.” Military history, from Babylon to our day, is but a long and painful commentary on that no less terrifying phrase.
+When the Hellenists of the Areopagus acquit Phryne of all her crimes because she drops her garments to her feet, Themis[^20] brands those boars of earthly Venus on the back, for the triumphal chariot of the Roman butcher. The penitentiary system takes the place of education’s absence. Such is the Mystery: social life must devour death or all causes of collective mortality. Thus, a thousand years after Zoroaster, Moses repeats: “Our God is a consuming fire.” Military history, from Babylon to our day, is but a long and painful commentary on that no less terrifying phrase.
 
 Daily practical observation and direct experience of Paganism stand constantly before our eyes. Children, in infancy and adolescence, pass from the family to the sieve of the political state, usurper of the social state and of its power to teach. Public instruction, thus uprooted, is the Tree of Death whose roots hang in the air; the spirit walks with its head bowed. The child receives from society, represented by the family, a living gold coin of valid and true mint, stamped with J. C. (Jesus Christ), and in an inverse transformation, society hands back a copper coin also marked J. C. but false (for it represents Julius Caesar—pontiff and emperor of the pagans).
 
