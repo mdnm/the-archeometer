@@ -4,6 +4,8 @@ date: '2025-02-13'
 description: First Part - Second Chapter - The Triumphant Error
 image: /og-image.png
 keywords: The Archeometer, Saint-Yves d'Alveydre, Pythagoras, Ancient Civilizations, Moses
+youtubeEmbedLink: https://www.youtube.com/embed/OQNpnlFDvhs
+youtubeEmbedTitle: Reading and Explaining The Archeometer - EP 4
 ---
 
 # CHAPTER TWO
