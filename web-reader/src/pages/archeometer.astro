@@ -1,0 +1,25 @@
+---
+import GematriaStrudelPlayer from '../components/GematriaStrudelPlayer';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="The Archeometer">
+  <div class="bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+    <div class="px-4 py-5 sm:p-6">
+      <h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">The Archeometer</h1>
+
+      <p class="text-gray-900 dark:text-white">
+        There are many practical applications of the Archeometer. The tools and screenshots below will give you some ideas.
+      </p>
+
+      <div class="mt-6 text-gray-900 dark:text-white">
+        <h2 class="text-xl font-bold">The Archeometer and Music</h2>
+        <GematriaStrudelPlayer client:only="react" />
+        <img src="/solar-alphabet.png" alt="The Archeometer and Music" class="w-full max-w-lg mx-auto h-auto rounded-md" />
+        <p class="text-gray-500 dark:text-gray-400 mt-1 text-center">
+          Each letter corresponds astrologically to a planet or sign, and those correspond to specific notes.
+        </p>
+      </div>
+    </div>
+  </div>
+</Layout> 

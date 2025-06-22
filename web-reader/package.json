@@ -15,9 +15,20 @@
     "@astrojs/tailwind": "^5.1.0",
     "@astrojs/vercel": "^6.1.3",
     "astro": "^4.3.5",
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^3.4.1",
+    "@strudel/core": "^1.2.2",
+    "@strudel/mini": "^1.2.2",
+    "@strudel/tonal": "^1.2.2",
+    "@strudel/transpiler": "^1.2.2",
+    "@strudel/webaudio": "^1.2.3",
+    "kaabalah": "^2.1.0",
+    "@astrojs/react": "^3.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.10"
+    "@tailwindcss/typography": "^0.5.10",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0"
   }
 }

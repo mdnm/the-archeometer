@@ -127,6 +127,12 @@ const socialImageURL = new URL(image, Astro.site);
               >
                 Saint Yves Natal Chart
               </a>
+              <a 
+                href="/archeometer" 
+                class={`inline-flex items-center px-1 pt-1 text-sm font-medium ${Astro.url.pathname === '/archeometer' ? 'border-b-2 border-indigo-500 text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400 hover:border-b-2 hover:border-gray-300 dark:hover:border-gray-600'}`}
+              >
+                The Archeometer
+              </a>
             </div>
           </div>
 
@@ -163,6 +169,12 @@ const socialImageURL = new URL(image, Astro.site);
             class={`block pl-3 pr-4 py-2 text-base font-medium ${Astro.url.pathname === '/natal-chart' ? 'bg-indigo-50 dark:bg-indigo-900/50 border-l-4 border-indigo-500 text-indigo-700 dark:text-indigo-300' : 'text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'}`}
           >
             Saint Yves Natal Chart
+          </a>
+          <a
+            href="/archeometer"
+            class={`block pl-3 pr-4 py-2 text-base font-medium ${Astro.url.pathname === '/archeometer' ? 'bg-indigo-50 dark:bg-indigo-900/50 border-l-4 border-indigo-500 text-indigo-700 dark:text-indigo-300' : 'text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'}`}
+          >
+            The Archeometer
           </a>
         </div>
       </div>

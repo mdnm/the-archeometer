@@ -1,5 +1,6 @@
 // @ts-check
 import partytown from '@astrojs/partytown';
+import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 import vercel from '@astrojs/vercel/static';
 import { defineConfig } from 'astro/config';
@@ -8,6 +9,7 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   integrations: [
     tailwind(),
+    react(),
     partytown({
       config: {
         forward: ["dataLayer.push"],
