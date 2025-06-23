@@ -184,6 +184,14 @@ const socialImageURL = new URL(image, Astro.site);
       <slot />
     </main>
 
+    <footer class="bg-white dark:bg-gray-800 shadow-sm">
+      <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <p class="text-gray-500 dark:text-gray-400 text-sm text-center">
+          Contribute to this project here: <a href="https://github.com/mdnm/the-archeometer" target="_blank" rel="noopener noreferrer" class="text-indigo-600 dark:text-indigo-500 hover:text-indigo-800 dark:hover:text-indigo-700">(source code)</a>
+        </p>
+      </div>
+    </footer>
+
     <script>
       // Mobile menu toggle
       const mobileMenuButton = document.querySelector('.mobile-menu-button');
