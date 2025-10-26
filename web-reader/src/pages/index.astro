@@ -1,8 +1,8 @@
 ---
-import { getCollection } from 'astro:content';
-import Layout from '../layouts/Layout.astro';
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
 
-const entries = await getCollection('english-translation-drafts');
+const entries = await getCollection("english-translation-drafts");
 const files = entries.sort((a, b) => a.data.date.localeCompare(b.data.date));
 ---
 
@@ -10,23 +10,28 @@ const files = entries.sort((a, b) => a.data.date.localeCompare(b.data.date));
   {/* YouTube Section */}
   <div class="bg-white dark:bg-gray-800 shadow sm:rounded-lg mb-6">
     <div class="px-4 py-5 sm:p-6">
-      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">READING AND COMMENTING - The Archeometer</h2>
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+        READING AND COMMENTING - The Archeometer
+      </h2>
       <div class="aspect-video w-full">
         <iframe
           class="w-full h-full rounded-lg"
-          src="https://www.youtube.com/embed/videoseries?si=7v78O6PhaurANb0F&amp;list=PLf6K24k21wdptRjSOw-VBexoI_SOTNkao"
-          title="READING AND COMMENTING - The Archeometer"
+          src="https://www.youtube.com/embed/mWS0jEAh_uE"
+          title="What is the Archeometer"
           frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
-        ></iframe>
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen></iframe>
       </div>
       <p class="mt-4 text-gray-600 dark:text-gray-300">
-        Join me on this series where we read along and I comment on books. The book we're reading now is "The Archeometer - KEY TO ALL RELIGIONS AND ALL SCIENCES OF ANTIQUITY", an english translation of L'Archéomètre - Clef de toutes les religions et de toutes by Saint-Yves D'Alveydre.
+        Join me on this series where we read along and I comment on books. The
+        book we're reading now is "The Archeometer - KEY TO ALL RELIGIONS AND
+        ALL SCIENCES OF ANTIQUITY", an english translation of L'Archéomètre -
+        Clef de toutes les religions et de toutes by Saint-Yves D'Alveydre.
       </p>
-      <a 
-        href="https://www.youtube.com/playlist?list=PLBqcbZfBWZxLGGxRYfYEZQDPwGJpDPXS4" 
-        target="_blank" 
+      <a
+        href="https://www.youtube.com/playlist?list=PLf6K24k21wdptRjSOw-VBexoI_SOTNkao"
+        target="_blank"
         rel="noopener noreferrer"
         class="flex mt-4 bg-indigo-600 hover:bg-indigo-800 w-full text-white font-bold py-2 px-4 rounded"
       >
@@ -38,19 +43,22 @@ const files = entries.sort((a, b) => a.data.date.localeCompare(b.data.date));
   {/* Content List */}
   <div class="bg-white dark:bg-gray-800 shadow sm:rounded-lg">
     <div class="px-4 py-5 sm:p-6">
-      <h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">English Translation Draft</h1>
+      <h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+        English Translation Draft
+      </h1>
       <div class="space-y-4">
-        {files.map(({ id, data }) => (
-          <a 
-						href={`/english-translation-drafts/${id}`}
-						class="flex border-l-4 border-indigo-500 bg-indigo-50 dark:bg-indigo-900/20 p-4 group">
-            <span
-              class="text-lg font-medium text-indigo-700 dark:text-indigo-300 group-hover:text-indigo-900 dark:group-hover:text-indigo-100"
+        {
+          files.map(({ id, data }) => (
+            <a
+              href={`/english-translation-drafts/${id}`}
+              class="flex border-l-4 border-indigo-500 bg-indigo-50 dark:bg-indigo-900/20 p-4 group"
             >
-              {data.title} - {new Date(data.date).toLocaleDateString()}
-            </span>
-          </a>
-        ))}
+              <span class="text-lg font-medium text-indigo-700 dark:text-indigo-300 group-hover:text-indigo-900 dark:group-hover:text-indigo-100">
+                {data.title} - {new Date(data.date).toLocaleDateString()}
+              </span>
+            </a>
+          ))
+        }
       </div>
     </div>
   </div>
