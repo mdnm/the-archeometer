@@ -1,4 +1,5 @@
 ---
+import NatalChartWheel from "../components/NatalChartWheel";
 import Layout from "../layouts/Layout.astro";
 ---
 
@@ -9,48 +10,17 @@ import Layout from "../layouts/Layout.astro";
         Saint Yves D'Alveydre's Natal Chart
       </h1>
 
-      <div
-        class="w-full max-w-3xl mx-auto mb-8 flex flex-col gap-3 items-center"
-      >
-        <img
-          src="/saint-yves-kaabalistic.jpeg"
-          alt="Saint Yves D'Alveydre's Kaabalistic Chart"
-          class="w-full h-full object-contain rounded-lg"
-        />
-        <span class="text-gray-500 dark:text-gray-400 text-md">
-          Made using <a
-            href="https://astrology.kaabalah.com?utm_source=thearcheometer.com&utm_medium=referral"
+      <div class="w-full mx-auto mb-8 flex flex-col gap-6">
+        <NatalChartWheel client:only="react" />
+
+        <p class="text-gray-500 dark:text-gray-400 text-center text-sm">
+          Live-rendered natal chart using <a
+            href="https://docs.kaabalah.com"
             target="_blank"
             class="text-indigo-600 dark:text-indigo-500 hover:text-indigo-800 dark:hover:text-indigo-700"
-            >astrology.kaabalah.com</a
+            >kaabalah</a
           >
-        </span>
-        <img
-          src="/saint-yves-astro-1.jpeg"
-          alt="Saint Yves D'Alveydre's Natal Astrology Chart"
-          class="w-full h-full object-contain rounded-lg"
-        />
-        <span class="text-gray-500 dark:text-gray-400 text-md">
-          Made using <a
-            href="https://astrology.kaabalah.com?utm_source=thearcheometer.com&utm_medium=referral"
-            target="_blank"
-            class="text-indigo-600 dark:text-indigo-500 hover:text-indigo-800 dark:hover:text-indigo-700"
-            >astrology.kaabalah.com</a
-          >
-        </span>
-        <img
-          src="/saint-yves-astro-2.jpeg"
-          alt="Saint Yves D'Alveydre's Natal Astrology Chart data"
-          class="w-full h-full object-contain rounded-lg"
-        />
-        <span class="text-gray-500 dark:text-gray-400 text-md">
-          Made using <a
-            href="https://astrology.kaabalah.com?utm_source=thearcheometer.com&utm_medium=referral"
-            target="_blank"
-            class="text-indigo-600 dark:text-indigo-500 hover:text-indigo-800 dark:hover:text-indigo-700"
-            >astrology.kaabalah.com</a
-          >
-        </span>
+        </p>
       </div>
 
       <div class="mt-6 text-gray-900 dark:text-white">

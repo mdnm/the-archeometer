@@ -21,7 +21,7 @@
     "@strudel/tonal": "^1.2.2",
     "@strudel/transpiler": "^1.2.2",
     "@strudel/webaudio": "^1.2.3",
-    "kaabalah": "^2.1.0",
+    "kaabalah": "^6.7.0",
     "@astrojs/react": "^3.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

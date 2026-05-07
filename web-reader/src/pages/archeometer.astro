@@ -1,6 +1,14 @@
 ---
+import { generateArcheometerSvg } from 'kaabalah/visual';
 import GematriaStrudelPlayer from '../components/GematriaStrudelPlayer';
 import Layout from '../layouts/Layout.astro';
+
+const archeometerSvg = generateArcheometerSvg({
+  width: 912,
+  height: 912,
+  background: "transparent",
+  title: "The Cosmological Archeometer",
+});
 ---
 
 <Layout title="The Archeometer">
@@ -13,6 +21,18 @@ import Layout from '../layouts/Layout.astro';
       </p>
 
       <div class="mt-6 text-gray-900 dark:text-white">
+        <h2 class="text-xl font-bold">The Visual Archeometer</h2>
+        <div class="w-full max-w-2xl mx-auto my-4 [&>svg]:w-full [&>svg]:h-auto" set:html={archeometerSvg} />
+        <p class="text-gray-500 dark:text-gray-400 mt-1 text-center">
+          The Cosmological Archeometer — rendered using <a
+            href="https://docs.kaabalah.com"
+            target="_blank"
+            class="text-indigo-600 dark:text-indigo-500 hover:text-indigo-800 dark:hover:text-indigo-700"
+          >kaabalah</a>
+        </p>
+      </div>
+
+      <div class="mt-6 text-gray-900 dark:text-white">
         <h2 class="text-xl font-bold">The Archeometer and Music</h2>
         <GematriaStrudelPlayer client:only="react" />
         <img src="/solar-alphabet.png" alt="The Archeometer and Music" class="w-full max-w-lg mx-auto h-auto rounded-md" />
@@ -22,4 +42,4 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </div>
   </div>
-</Layout> 
+</Layout>
