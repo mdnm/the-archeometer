@@ -1,21 +1,21 @@
 ---
-import type { GetStaticPaths } from 'astro';
-import { getCollection, type CollectionEntry } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
+import type { GetStaticPaths } from "astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
 
 export const prerender = true;
 
 interface Props {
-  entry: CollectionEntry<'chapters'>;
+  entry: CollectionEntry<"chapters">;
   nextPage: { slug: string; title: string; chapter: number } | null;
   prevPage: { slug: string; title: string; chapter: number } | null;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const entries = await getCollection('chapters');
+  const entries = await getCollection("chapters");
   const sorted = entries.sort((a, b) => a.data.chapter - b.data.chapter);
 
-  const stripExt = (id: string) => id.replace(/\.mdx?$/, '');
+  const stripExt = (id: string) => id.replace(/\.mdx?$/, "");
 
   return sorted.map((entry, index) => {
     const next = index < sorted.length - 1 ? sorted[index + 1] : null;
@@ -25,8 +25,20 @@ export const getStaticPaths: GetStaticPaths = async () => {
       params: { slug: stripExt(entry.id) },
       props: {
         entry,
-        nextPage: next ? { slug: stripExt(next.id), title: next.data.title, chapter: next.data.chapter } : null,
-        prevPage: prev ? { slug: stripExt(prev.id), title: prev.data.title, chapter: prev.data.chapter } : null,
+        nextPage: next
+          ? {
+              slug: stripExt(next.id),
+              title: next.data.title,
+              chapter: next.data.chapter,
+            }
+          : null,
+        prevPage: prev
+          ? {
+              slug: stripExt(prev.id),
+              title: prev.data.title,
+              chapter: prev.data.chapter,
+            }
+          : null,
       },
     };
   });
@@ -37,63 +49,86 @@ const { Content } = await entry.render();
 ---
 
 <Layout
-  title={`Chapter ${entry.data.chapter}: ${entry.data.title} — The Archeometer`}
+  title={`Chapter ${entry.data.chapter}: ${entry.data.title} - The Archeometer`}
   description={entry.data.subtitle}
   type="article"
-  keywords={['The Archeometer', "Saint-Yves d'Alveydre", entry.data.title, entry.data.part]}
+  keywords={[
+    "The Archeometer",
+    "Saint-Yves d'Alveydre",
+    entry.data.title,
+    entry.data.part,
+  ]}
 >
   <div class="relative">
     {/* Fixed Navigation */}
     <div class="fixed bottom-0 left-0 right-0 z-10 block navigation-buttons">
-      <div class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center gap-2">
-          {prevPage ? (
-            <a
-              href={`/chapters/${prevPage.slug}`}
-              class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 shrink-0"
-            >
-              &larr; Ch. {prevPage.chapter}
-            </a>
-          ) : (
-            <a
-              href="/"
-              class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 shrink-0"
-            >
-              &larr; Home
-            </a>
-          )}
+      <div
+        class="bg-[var(--color-surface)] border-t border-[var(--color-border)] shadow-lg"
+      >
+        <div
+          class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center gap-2"
+        >
+          {
+            prevPage ? (
+              <a
+                href={`/chapters/${prevPage.slug}`}
+                class="inline-flex items-center px-4 py-2 border border-[var(--color-border)] text-sm font-medium rounded-md text-[var(--color-text)] bg-[var(--color-surface)] hover:bg-[var(--color-surface-alt)] shrink-0"
+              >
+                &larr; Ch. {prevPage.chapter}
+              </a>
+            ) : (
+              <a
+                href="/"
+                class="inline-flex items-center px-4 py-2 border border-[var(--color-border)] text-sm font-medium rounded-md text-[var(--color-text)] bg-[var(--color-surface)] hover:bg-[var(--color-surface-alt)] shrink-0"
+              >
+                &larr; Home
+              </a>
+            )
+          }
 
-          <span class="text-sm text-gray-500 dark:text-gray-400 truncate max-w-[250px] md:max-w-full">
+          <span
+            class="text-sm text-[var(--color-text-muted)] truncate max-w-[250px] md:max-w-full"
+          >
             Chapter {entry.data.chapter}: {entry.data.title}
           </span>
 
-          {nextPage && (
-            <a
-              href={`/chapters/${nextPage.slug}`}
-              class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 shrink-0"
-            >
-              Ch. {nextPage.chapter} &rarr;
-            </a>
-          )}
+          {
+            nextPage && (
+              <a
+                href={`/chapters/${nextPage.slug}`}
+                class="inline-flex items-center px-4 py-2 border border-[var(--color-border)] text-sm font-medium rounded-md text-[var(--color-text)] bg-[var(--color-surface)] hover:bg-[var(--color-surface-alt)] shrink-0"
+              >
+                Ch. {nextPage.chapter} &rarr;
+              </a>
+            )
+          }
         </div>
       </div>
     </div>
 
     {/* Main Content */}
-    <div class="bg-white dark:bg-gray-800 shadow sm:rounded-lg mb-24">
+    <div
+      class="bg-[var(--color-surface)] border border-[var(--color-border)] sm:rounded-lg mb-24 mt-5"
+    >
       <div class="px-4 py-5 sm:p-6">
-        <header class="mb-8 border-b border-gray-200 dark:border-gray-700 pb-6">
-          <p class="text-sm font-medium text-indigo-600 dark:text-indigo-400 uppercase tracking-wide">
+        <header class="mb-8 border-b border-[var(--color-border)] pb-6">
+          <p
+            class="text-sm font-medium text-[var(--color-active)] uppercase tracking-wide"
+          >
             {entry.data.part}
           </p>
-          <h1 class="text-3xl font-bold text-gray-900 dark:text-white mt-2">
+          <h1
+            class="text-3xl font-serif font-bold text-[var(--color-text)] mt-2"
+          >
             Chapter {entry.data.chapter}: {entry.data.title}
           </h1>
-          {entry.data.subtitle && (
-            <p class="mt-2 text-lg text-gray-600 dark:text-gray-400 italic">
-              {entry.data.subtitle}
-            </p>
-          )}
+          {
+            entry.data.subtitle && (
+              <p class="mt-2 text-lg text-[var(--color-text-muted)] italic">
+                {entry.data.subtitle}
+              </p>
+            )
+          }
         </header>
 
         <article class="prose lg:prose-xl dark:prose-invert max-w-none">
@@ -101,35 +136,43 @@ const { Content } = await entry.render();
         </article>
 
         {/* Bottom Navigation */}
-        <div class="mt-8 flex items-center justify-between border-t border-gray-200 dark:border-gray-700 pt-4 navigation-end gap-2">
-          {prevPage ? (
-            <a
-              href={`/chapters/${prevPage.slug}`}
-              class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 shrink-0"
-            >
-              &larr; Ch. {prevPage.chapter}: {prevPage.title}
-            </a>
-          ) : (
-            <a
-              href="/"
-              class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 shrink-0"
-            >
-              &larr; Home
-            </a>
-          )}
+        <div
+          class="mt-8 flex items-center justify-between border-t border-[var(--color-border)] pt-4 navigation-end gap-2"
+        >
+          {
+            prevPage ? (
+              <a
+                href={`/chapters/${prevPage.slug}`}
+                class="inline-flex items-center px-4 py-2 border border-[var(--color-border)] text-sm font-medium rounded-md text-[var(--color-text)] bg-[var(--color-surface)] hover:bg-[var(--color-surface-alt)] shrink-0"
+              >
+                &larr; Ch. {prevPage.chapter}: {prevPage.title}
+              </a>
+            ) : (
+              <a
+                href="/"
+                class="inline-flex items-center px-4 py-2 border border-[var(--color-border)] text-sm font-medium rounded-md text-[var(--color-text)] bg-[var(--color-surface)] hover:bg-[var(--color-surface-alt)] shrink-0"
+              >
+                &larr; Home
+              </a>
+            )
+          }
 
-          <span class="text-sm text-gray-500 dark:text-gray-400 truncate max-w-[250px] md:max-w-full">
+          <span
+            class="text-sm text-[var(--color-text-muted)] truncate max-w-[250px] md:max-w-full"
+          >
             Chapter {entry.data.chapter}: {entry.data.title}
           </span>
 
-          {nextPage && (
-            <a
-              href={`/chapters/${nextPage.slug}`}
-              class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 shrink-0"
-            >
-              Ch. {nextPage.chapter}: {nextPage.title} &rarr;
-            </a>
-          )}
+          {
+            nextPage && (
+              <a
+                href={`/chapters/${nextPage.slug}`}
+                class="inline-flex items-center px-4 py-2 border border-[var(--color-border)] text-sm font-medium rounded-md text-[var(--color-text)] bg-[var(--color-surface)] hover:bg-[var(--color-surface-alt)] shrink-0"
+              >
+                Ch. {nextPage.chapter}: {nextPage.title} &rarr;
+              </a>
+            )
+          }
         </div>
       </div>
     </div>
@@ -157,21 +200,21 @@ const { Content } = await entry.render();
   </style>
 
   <script>
-    const nav = document.querySelector('.navigation-buttons');
-    const endNav = document.querySelector('.navigation-end');
+    const nav = document.querySelector(".navigation-buttons");
+    const endNav = document.querySelector(".navigation-end");
 
     if (nav && endNav) {
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
-            nav.classList.add('hide');
-            endNav.classList.add('show');
+            nav.classList.add("hide");
+            endNav.classList.add("show");
           } else {
-            nav.classList.remove('hide');
-            endNav.classList.remove('show');
+            nav.classList.remove("hide");
+            endNav.classList.remove("show");
           }
         },
-        { rootMargin: '100px' }
+        { rootMargin: "100px" },
       );
       observer.observe(endNav);
     }

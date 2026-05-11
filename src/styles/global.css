@@ -2,21 +2,72 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-bg:           #fffaf1;
+  --color-surface:      #ffffff;
+  --color-surface-alt:  #f5f0e8;
+  --color-border:       #e8e0d0;
+  --color-text:         #1a1208;
+  --color-text-muted:   #5c4f3a;
+  --color-accent:       #8f69a3;
+  --color-accent-warm:  #e96836;
+  --color-link:         #63a890;
+  --color-active:       #cc58a1;
+}
+
+.dark {
+  --color-bg:           #12122a;
+  --color-surface:      #1a1a2e;
+  --color-surface-alt:  #20203a;
+  --color-border:       #2e2e4e;
+  --color-text:         #f0ece4;
+  --color-text-muted:   #9d98c0;
+  --color-accent:       #8f69a3;
+  --color-accent-warm:  #e96836;
+  --color-link:         #63a890;
+  --color-active:       #cc58a1;
+}
+
+/* Hero gradient */
+.hero-gradient {
+  background: radial-gradient(ellipse at 60% 40%, rgba(143, 105, 163, 0.12) 0%, transparent 60%), var(--color-bg);
+}
+
+/* Card style */
+.card-mystical {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px rgba(143, 105, 163, 0.08);
+}
+
+/* Chapter list rotating border colors */
+.chapter-item { border-left-width: 4px; border-left-style: solid; }
+.chapter-item:nth-child(6n+1) { border-left-color: #78bd79; }
+.chapter-item:nth-child(6n+2) { border-left-color: #cc58a1; }
+.chapter-item:nth-child(6n+3) { border-left-color: #e25b61; }
+.chapter-item:nth-child(6n+4) { border-left-color: #e96836; }
+.chapter-item:nth-child(6n+5) { border-left-color: #8f69a3; }
+.chapter-item:nth-child(6n+6) { border-left-color: #63a890; }
+
 /* Footnote Reference Styles */
 .prose sup a {
-  @apply no-underline bg-indigo-100/50 text-indigo-600 px-1.5 py-0.5 mx-0.5 rounded text-xs font-semibold transition-all duration-200;
+  @apply no-underline px-1.5 py-0.5 mx-0.5 rounded text-xs font-semibold transition-all duration-200;
+  background: rgba(143, 105, 163, 0.15);
+  color: #8f69a3;
 }
 
 .prose sup a:hover {
-  @apply bg-indigo-100;
+  background: rgba(143, 105, 163, 0.25);
 }
 
 .dark .prose sup a {
-  @apply bg-indigo-500/20 text-indigo-300;
+  background: rgba(99, 168, 144, 0.2);
+  color: #63a890;
 }
 
 .dark .prose sup a:hover {
-  @apply bg-indigo-500/30;
+  background: rgba(99, 168, 144, 0.3);
 }
 
 /* Footnote Definition Styles */
@@ -35,26 +86,26 @@
 }
 
 .prose .footnotes ol li::before {
-  @apply absolute left-0 top-0 h-6 w-6 bg-indigo-100/50 text-indigo-600 rounded-full flex items-center justify-center text-xs font-semibold;
+  @apply absolute left-0 top-0 h-6 w-6 rounded-full flex items-center justify-center text-xs font-semibold;
   content: counter(footnote);
+  background: rgba(143, 105, 163, 0.15);
+  color: #8f69a3;
 }
 
 .dark .prose .footnotes ol li::before {
-  @apply bg-indigo-500/20 text-indigo-300;
+  background: rgba(99, 168, 144, 0.2);
+  color: #63a890;
 }
 
 .prose .footnotes a[data-footnote-backref] {
-  @apply no-underline ml-0.5 text-indigo-600;
+  @apply no-underline ml-0.5;
+  color: #8f69a3;
 }
 
 .dark .prose .footnotes a[data-footnote-backref] {
-  @apply text-indigo-300;
+  color: #63a890;
 }
 
 .prose .footnotes em {
-  @apply text-gray-600;
+  color: var(--color-text-muted);
 }
-
-.dark .prose .footnotes em {
-  @apply text-gray-400;
-} 
