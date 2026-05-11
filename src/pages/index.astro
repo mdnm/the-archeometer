@@ -1,0 +1,83 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+
+const chapters = await getCollection("chapters");
+const sorted = chapters.sort((a, b) => a.data.chapter - b.data.chapter);
+const stripExt = (id: string) => id.replace(/\.mdx?$/, '');
+---
+
+<Layout title="The Archeometer — English Translation">
+  {/* Book Introduction */}
+  <div class="bg-white dark:bg-gray-800 shadow sm:rounded-lg mb-6">
+    <div class="px-4 py-5 sm:p-6">
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+        The Archeometer
+      </h1>
+      <p class="text-lg text-gray-500 dark:text-gray-400 italic mb-4">
+        Key to All Religions and All Sciences of Antiquity
+      </p>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        An English translation of <em>L'Archéomètre &mdash; Clef de toutes les religions et de toutes les sciences de l'Antiquité</em> by Saint-Yves d'Alveydre. Translated by <a href="https://x.com/matmoura19" target="_blank" rel="noopener noreferrer" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-200">@matmoura19</a> with the help of <a href="https://translateabook.com" target="_blank" rel="noopener noreferrer" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-200">translateabook.com</a>.
+      </p>
+      <p class="text-gray-600 dark:text-gray-300">
+        The Archeometer is an instrument for measuring the principles underlying all religions and sciences of antiquity. Saint-Yves d'Alveydre spent decades reconstructing this ancient system of correspondences between letters, numbers, musical notes, colors, planets, and zodiacal signs &mdash; revealing a universal Logos at the root of all sacred traditions.
+      </p>
+    </div>
+  </div>
+
+  {/* Chapter List */}
+  <div class="bg-white dark:bg-gray-800 shadow sm:rounded-lg mb-6">
+    <div class="px-4 py-5 sm:p-6">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+        Chapters
+      </h2>
+      <div class="space-y-4">
+        {sorted.map(({ id, data }) => (
+          <a
+            href={`/chapters/${stripExt(id)}`}
+            class="flex border-l-4 border-indigo-500 bg-indigo-50 dark:bg-indigo-900/20 p-4 group"
+          >
+            <div>
+              <span class="text-lg font-medium text-indigo-700 dark:text-indigo-300 group-hover:text-indigo-900 dark:group-hover:text-indigo-100">
+                Chapter {data.chapter}: {data.title}
+              </span>
+              <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                {data.part}
+              </p>
+            </div>
+          </a>
+        ))}
+      </div>
+      <p class="mt-6 text-sm text-gray-500 dark:text-gray-400 italic">
+        More chapters coming soon.
+      </p>
+    </div>
+  </div>
+
+  {/* Interactive Tools */}
+  <div class="bg-white dark:bg-gray-800 shadow sm:rounded-lg mb-6">
+    <div class="px-4 py-5 sm:p-6">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+        Interactive Tools
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <a
+          href="/archeometer"
+          class="flex flex-col p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+        >
+          <span class="text-lg font-medium text-gray-900 dark:text-white">The Archeometer</span>
+          <span class="text-sm text-gray-500 dark:text-gray-400 mt-1">Interactive SVG visual with gematria music player</span>
+        </a>
+        <a
+          href="/natal-chart"
+          class="flex flex-col p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+        >
+          <span class="text-lg font-medium text-gray-900 dark:text-white">Saint-Yves' Natal Chart</span>
+          <span class="text-sm text-gray-500 dark:text-gray-400 mt-1">Live-rendered astrological natal chart</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</Layout>
