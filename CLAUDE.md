@@ -66,7 +66,9 @@ const chapters = defineCollection({
 | 1 | `01-dedication.mdx` | Dedication + Notice (editors, 1911) |
 | 2 | `02-preface.mdx` | Preface (by Saint-Yves) |
 | 3 | `03-first-part-ch1-mental-regression.mdx` | First Part, Chapter One |
-| 4 | (next) | First Part, Chapter Two: Triumphant Error |
+| 4 | `04-first-part-ch2-triumphant-error.mdx` | First Part, Chapter Two |
+| 5 | `05-first-part-ch3-spiritual-death.mdx` | First Part, Chapter Three |
+| 6 | (next) | Second Part, Chapter One |
 | ... | ... | ... |
 
 ## Adding a new chapter
@@ -113,9 +115,24 @@ Lines 21856+:    Translator's Notes (T-01 through T-XX)
 ## MDX gotchas
 
 - **`[*]` must be escaped as `[&#42;]`** — MDX interprets `[*]` as markdown syntax and breaks. All footnote references use this pattern.
-- **Footnote links pattern** — in-text: `<sup><a href="#T-01" id="ref-T-01">[&#42;]</a></sup>`, at bottom: `<p id="T-01">...<a href="#ref-T-01">↩</a></p>`. Bidirectional.
+- **Footnote links pattern** — in-text: `<sup><a href="#T-01" id="ref-T-01">[&#42;]</a></sup>`, at bottom in a notes section. Bidirectional.
+- **Translator's Notes section** — goes at the very end of the chapter. No heading. Just a `<section>` with a top border:
+  ```html
+  <section class="border-t border-gray-200 dark:border-gray-700 mt-12 pt-6">
+
+  <p id="T-01" class="text-sm mb-3">
+  <strong>T-01</strong> — <i>Translator's Note:</i> Note text here. <a href="#ref-T-01" class="text-indigo-600 dark:text-indigo-400">↩</a>
+  </p>
+
+  </section>
+  ```
+  Do NOT add a heading like `<h3>Translator's Notes</h3>` — the section border is the only visual separator.
 - **Use `<i>` not `<em>` inside JSX-attributed elements** (like `<p class="...">`) — MDX sometimes mis-parses `<em>` as markdown emphasis in those contexts.
-- **Author footnotes** (like `(1) See Mission des Juifs`) are inline in the text, not linked — they use simple `<sup>(1)</sup>` notation.
+- **Author footnotes** (like `(1) See Mission des Juifs`) are bidirectional links, same as translator's notes. In-text: `<sup><a href="#note-1" id="ref-note-1">(1)</a></sup>`. At bottom (placed inline near where they're referenced, NOT inside the translator's notes `<section>`):
+  ```html
+  <p id="note-1" class="text-sm text-gray-500 dark:text-gray-400 mt-4">(1) See <i>Mission des Juifs</i>. Note by the A. St-Y. <a href="#ref-note-1" class="text-indigo-600 dark:text-indigo-400">↩</a></p>
+  ```
+  Use `note-1a`, `note-1b` etc. when a chapter has multiple distinct `(1)` notes.
 
 ## URL structure
 
