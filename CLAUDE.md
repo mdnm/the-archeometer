@@ -2,7 +2,7 @@
 
 ## What this is
 
-An English translation of Saint-Yves d'Alveydre's **L'Archéomètre** (1911), published as a web reader at [thearcheometer.com](https://thearcheometer.com). Translated by [@matmoura19](https://x.com/matmoura19) using [translateabook.com](https://translateabook.com).
+An English translation of Saint-Yves d'Alveydre's **L'Archéomètre** (1911), published as a web reader at [thearcheometer.com](https://thearcheometer.com). Translated by [@matmoura19](https://x.com/matmoura19) using [translateabook.com](https://translateabook.com?ref=6KMESLSP).
 
 The site also includes two interactive tools: an Archeometer SVG visual with a gematria music player, and Saint-Yves' natal chart.
 

@@ -2,7 +2,7 @@
 
 An English translation of **L'Archéomètre — Clef de toutes les religions et de toutes les sciences de l'Antiquité** by Saint-Yves d'Alveydre.
 
-Translated by [@matmoura19](https://x.com/matmoura19) with the help of [translateabook.com](https://translateabook.com).
+Translated by [@matmoura19](https://x.com/matmoura19) with the help of [translateabook.com](https://translateabook.com?ref=6KMESLSP).
 
 Read it online at [thearcheometer.com](https://thearcheometer.com).
 
