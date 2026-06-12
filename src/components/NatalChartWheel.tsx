@@ -303,6 +303,15 @@ export default function NatalChartWheel() {
         });
 
         setChart(result);
+        window.dispatchEvent(
+          new CustomEvent("archeometer:analytics", {
+            detail: {
+              event: "tool_result_viewed",
+              tool_type: "natal_chart",
+              result_type: "chart_rendered",
+            },
+          }),
+        );
       } catch (e) {
         setError(e instanceof Error ? e.message : "Failed to generate chart");
       } finally {

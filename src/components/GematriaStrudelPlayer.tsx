@@ -58,6 +58,14 @@ const GematriaStrudelPlayer: React.FC = () => {
 
   const handlePlay = () => {
     if (!evaluateRef.current || !ctxRef.current || !inputValue) return;
+    window.dispatchEvent(
+      new CustomEvent("archeometer:analytics", {
+        detail: {
+          event: "tool_started",
+          tool_type: "gematria_music",
+        },
+      }),
+    );
     ctxRef.current.resume();
     if (!hasEvaluatedBaseCode && baseCode) {
       evaluateRef.current(baseCode);
@@ -68,6 +76,15 @@ const GematriaStrudelPlayer: React.FC = () => {
     setNoteNames(sequences.map((seq: string) => seq.split(' ').map(s => n2n[s]).join(' ')));
 
     evaluateRef.current(`note("${formattedSequences}").sound("piano").dur(0.3)`);
+    window.dispatchEvent(
+      new CustomEvent("archeometer:analytics", {
+        detail: {
+          event: "tool_result_viewed",
+          tool_type: "gematria_music",
+          result_type: "audio_sequence",
+        },
+      }),
+    );
   };
 
   const handleStop = () => {

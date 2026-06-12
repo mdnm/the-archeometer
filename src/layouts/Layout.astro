@@ -22,6 +22,9 @@ const {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImageURL = new URL(image, Astro.site);
+const posthogKey = import.meta.env.PUBLIC_POSTHOG_KEY;
+const posthogHost =
+  import.meta.env.PUBLIC_POSTHOG_HOST || "https://us.i.posthog.com";
 ---
 
 <!doctype html>
@@ -66,6 +69,15 @@ const socialImageURL = new URL(image, Astro.site);
     <meta name="format-detection" content="telephone=no" />
     <meta name="theme-color" content="#1a1a2e" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <script
+      is:inline
+      set:html={`window.__ARCHEOMETER_ANALYTICS__ = ${JSON.stringify({
+        posthogKey,
+        posthogHost,
+      })};`}
+    />
+    <script src="/posthog-analytics.js" defer></script>
 
     <!-- Google Analytics -->
     <script
